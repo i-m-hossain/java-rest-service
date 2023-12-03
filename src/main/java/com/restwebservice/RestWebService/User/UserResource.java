@@ -28,7 +28,10 @@ public class UserResource {
     }
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable int id){
-        return service.findOne(id);
+        User user = service.findOne(id);
+        if(user == null)
+            throw new UserNotFoundException("id:"+id);
+        return user;
     }
     @PutMapping("/users/{id}")
     public User updateUserById(@PathVariable int id, @RequestBody User user){
