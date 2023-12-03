@@ -1,4 +1,5 @@
 package com.restwebservice.RestWebService.User;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,7 +18,7 @@ public class UserResource {
         return service.findAll();
     }
     @PostMapping("/users")
-    public ResponseEntity<Object> storeUser(@RequestBody User user){
+    public ResponseEntity<Object> storeUser(@Valid @RequestBody User user){
         User savedUser = service.save(user);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -36,5 +37,10 @@ public class UserResource {
     @PutMapping("/users/{id}")
     public User updateUserById(@PathVariable int id, @RequestBody User user){
         return service.updateOne(id, user);
+    }
+    @DeleteMapping("/users/{id}")
+    public void removeUser(@PathVariable int id){
+
+        service.deleteUserById(id);
     }
 }

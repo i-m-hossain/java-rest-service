@@ -1,10 +1,16 @@
 package com.restwebservice.RestWebService.User;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class User {
+
     private Integer id;
+    @Size(min = 2, message = "name must be 2 or more characters")
     private String name;
+    @Past(message = "birthdate must be before today")
     private LocalDate birthdate;
 
     public User(Integer id, String name, LocalDate birthdate) {
