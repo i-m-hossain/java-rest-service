@@ -21,6 +21,6 @@ public class HelloWorld {
     @GetMapping("/hello/i18n")
     public String sayHelloInternationalized(){
         Locale locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage("good.night.message", null,  "default Message", locale);
+        return messageSource.getMessage("good.morning.message", null,  "default Message", locale);
     }
 }
