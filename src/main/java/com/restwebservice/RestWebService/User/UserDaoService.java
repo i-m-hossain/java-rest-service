@@ -1,5 +1,4 @@
 package com.restwebservice.RestWebService.User;
-
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
